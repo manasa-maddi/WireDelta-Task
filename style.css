@@ -1,0 +1,161 @@
+<style>
+			.fieldTD input[type="text"] {
+				border			:	2px solid #bebebe;
+				height			:	24px;
+				border-radius	:	5px;
+			}
+			
+			.mandatoryStarLabel  {
+				display			:	none;
+			}
+			
+			.taskItemLabelDisp {
+				color			:	#FFFFFF;
+				text-transform	:	uppercase;
+				font-size		:	10pt;
+				font-weight		:	bold;
+				text-align		:	center;
+				vertical-align	:	middle;
+				font-family		:	calibri, Helvetica, sans-serif;
+				position		:	absolute;
+				display			:	block;
+				font-size		:	20pt;
+				padding-top		:	12%;
+			}
+			
+			#ageCalcLabelDisp {
+				background		:	#A7F432;
+				top				:	0%;
+				right			:	50%;
+				bottom			:	50%;
+				left			:	0%;
+			}
+			
+			#suppCalcLabelDisp {
+				background		:	#FD5240;
+				top				:	0%;
+				right			:	0%;
+				bottom			:	50%;
+				left			:	50%;
+			}
+			
+			#geoCalcLabelDisp {
+				background		:	#C9A0DC;
+				top				:	50%;
+				right			:	50%;
+				bottom			:	0%;
+				left			:	0%;
+			}
+			
+			#tempConvLabelDisp {
+				background		:	#50BFE6;
+				top				:	50%;
+				right			:	0%;
+				bottom			:	0%;
+				left			:	50%;
+			}
+			
+			#labelContainer {
+				height			:	100%;
+				width			:	100%;
+			}
+			
+			#contentContainer {
+				
+			}
+			
+			#contentHeaderDiv {
+				position		:	absolute;
+				top				:	0%;
+				right			:	0%;
+				bottom			:	80%;
+				left			:	0%;
+				background		:	#343436;
+				color			:	palevioletred;
+				text-align		:	center;
+				vertical-align	:	middle;
+			}
+			
+			#contentHeaderDiv table {
+				height			:	100%;
+				vertical-align	:	middle;
+			}
+			
+			#contentHeaderTD {
+				font-size		:	30pt;
+				font-weight		:	bold;
+				padding-left	:	25%;
+				text-align		:	left;
+			}
+			
+			#formContainer {
+				position		:	absolute;
+				top				:	20%;
+				right			:	0%;
+				bottom			:	15%;
+				left			:	0%;
+				background		:	#673AB7;
+				text-align		:	center;
+				vertical-align	:	middle;
+			}
+			
+			#resultContainer {
+				position		:	absolute;
+				top				:	85%;
+				right			:	0%;
+				bottom			:	0%;
+				left			:	0%;
+				background		:	#A7F432;
+				text-align		:	center;
+				vertical-align	:	middle;
+			}
+			
+			#successResultDiv, #errorResultDiv {
+				margin-top		:	3%;
+			}
+			
+			.labelTD {
+				text-align		:	right;
+				width			:	45%;
+			}
+			
+			.fieldTD {
+				text-align		:	left;
+				margin-left		:	15px;
+			}
+			
+			.taskItemContentDiv {
+				position		:	absolute;
+				top				:	20%;
+				right			:	0%;
+				bottom			:	0%;
+				left			:	0%;
+				text-align		:	center;
+				vertical-align	:	middle;
+			}
+			
+			.submitButton, #backButton {
+				background-color: #004080;
+				border			: none;
+				color			: white;
+				padding			: 3px 20px;
+				text-align		: center;
+				text-decoration	: none;
+				display			: inline-block;
+				font-size		: 12pt;
+				margin			: 2px 2px;
+				cursor			: pointer;
+				color			: white; 
+				border			: 2px solid #008CBA;
+				border-radius	: 8px;
+				box-shadow		: 0 4px 4px 0 rgba(0,0,0,0.2), 0 4px 4px 0 rgba(0,0,0,0.19);
+				font-family		:	calibri, Helvetica, sans-serif;
+				transition-duration: 0.4s;
+			}
+
+			.submitButton:hover, #backButton:hover {
+				background-color: #008CBA;
+				color: white;
+				border: 2px solid #004080;
+			}
+		<

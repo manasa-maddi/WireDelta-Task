@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Technical Task</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+		<link rel="icon" href="tab.png"><!--Including an IMAGE -->
+		<script type="text/javascript" src="script.js"></script> <!--Including a SCRIPT FILE-->
+		<link rel = "stylesheet" href = "style.css"  /><!--Including a  STYLE SHEET-->
+	</head>
+	
+	<body>
+		<div id="labelContainer">
+			<div class="taskItemLabelDisp" id="ageCalcLabelDisp">
+				AGE CALCULATOR
+			</div>
+			
+			<div class="taskItemLabelDisp" id="suppCalcLabelDisp">
+				LIFETIME SUPPLY CALCULATOR
+			</div>
+			
+			<div class="taskItemLabelDisp" id="geoCalcLabelDisp">
+				GEOMETRIZER CALCULATOR
+			</div>
+			
+			<div class="taskItemLabelDisp" id="tempConvLabelDisp">
+				TEMPERATURE CONVERTER
+			</div>
+		</div>
+		
+		<div id="contentContainer" style="display:none">
+			<div id="contentHeaderDiv">
+				<table width="100%">
+					<tr>
+						<td width="15%">
+							<input type="button" id="backButton" value="Back To Home"/>
+						</td>
+						<td id="contentHeaderTD">
+							
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+			<form name="calculatorForm" id="calculatorForm">
+				<div id="formContainer">
+					<div class="taskItemContentDiv" id="ageCalcContainer">
+						<table width="100%">
+							<tr>
+								<td class="labelTD">
+									<label>Enter Your Birth Year<span class="mandatoryStarLabel"> *</span></label>
+								</td>
+								<td class="fieldTD">
+									<input type="text" id="birthYear" maxlength="4" />
+								</td>
+							</tr>
+							
+							<tr>
+								<td class="labelTD">
+									<label class="labelName">Enter To Year:</label>
+								</td>
+								<td class="fieldTD">
+									<input type="text" id="toYear" maxlength="4" />
+								</td>
+							</tr>
+							
+							<tr>
+								<td>&nbsp;</td>
+								<td class="fieldTD">
+									<input type="button" id="calculateAge" class="submitButton" value="Calculate Age"/>
+								</td>
+							</tr>
+						</table>
+					</div>
+					
+					<div class="taskItemContentDiv" id="supplyCalcContainer">
+						<table width="100%">
+							<tr>
+								<td class="labelTD">
+									<label>Enter Current Age<span class="mandatoryStarLabel"> *</span></label>
+								</td>
+								<td class="fieldTD">
+									<input type="text" id="currentAge" maxlength=2" />
+								</td>
+							</tr>
+							
+							<tr>
+								<td class="labelTD">
+									<label class="labelName">Enter Amount Per Day<span class="mandatoryStarLabel"> *</span></label>
+								</td>
+								<td class="fieldTD">
+									<input type="text" id="amountPerDay" />
+								</td>
+							</tr>
+							
+							<tr>
+								<td>&nbsp;</td>
+								<td class="fieldTD">
+									<input type="button" id="calculateSupply" class="submitButton" value="Calculate Supply"/>
+								</td>
+							</tr>
+						</table>
+					</div>
+					
+					<div class="taskItemContentDiv" id="geoCalcContainer">
+						<table width="100%">
+							<tr>
+								<td class="labelTD">
+									<label>Enter Radius<span class="mandatoryStarLabel"> *</span></label>
+								</td>
+								<td class="fieldTD">
+									<input type="text" id="radius" />
+								</td>
+							</tr>
+							
+							<tr>
+								<td>&nbsp;</td>
+								<td class="fieldTD">
+									<input type="button" id="calculateCircleProps" class="submitButton" value="Get Circle Properties"/>
+								</td>
+							</tr>
+						</table>
+					</div>
+					
+					<div class="taskItemContentDiv" id="tempConvContainer">
+						<table width="100%">
+							<tr>
+								<td class="labelTD">
+									<label>Select Temperature Mode</label>
+								</td>
+								<td class="fieldTD">
+									<input type="radio" class="temperatureType" name="temperatureType" value="Celsius" checked />Celsius &nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" class="temperatureType" name="temperatureType" value="Fahrenheit" />Fahrenheit
+								</td>
+							</tr>
+							
+							<tr>
+								<td class="labelTD">
+									<label class="labelName" id="temperatureLabel">Enter Temperature In Celsius<span class="mandatoryStarLabel"> *</span></label>
+								</td>
+								<td class="fieldTD">
+									<input type="text" id="temperatureValue" />
+								</td>
+							</tr>
+							
+							<tr>
+								<td>&nbsp;</td>
+								<td class="fieldTD">
+									<input type="button" id="convertTemperature" class="submitButton" value="Convert To Fahrenheit"/>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</form>
+		
+			<div id="resultContainer">
+				<div id="successResultDiv"></div>
+				<div id="errorResultDiv"></div>
+			</div>
+		</div>
+		
+		<script>
+			$("#backButton").click(function(){
+				$("#contentContainer").hide();
+				
+				$("#labelContainer").show();
+			});
+			
+			$(".taskItemLabelDisp").click(function(){
+				$("#labelContainer, .taskItemContentDiv").hide();
+				$("#calculatorForm").trigger("reset");
+				$("#contentContainer").show();
+				$("#successResultDiv, #errorResultDiv").html("");
+				
+				var currLabelId = $(this).attr("id");
+				if(currLabelId == "ageCalcLabelDisp"){
+					$("#contentHeaderTD").html("AGE CALCULATOR");
+					$("#ageCalcContainer").show();
+				}else if(currLabelId == "suppCalcLabelDisp"){
+					$("#contentHeaderTD").html("SUPPLY CALCULATOR");
+					$("#supplyCalcContainer").show();
+				}else if(currLabelId == "geoCalcLabelDisp"){
+					$("#contentHeaderTD").html("THE GEOMETRIZER");
+					$("#geoCalcContainer").show();
+				}else if(currLabelId == "tempConvLabelDisp"){
+					$("#contentHeaderTD").html("TEMPERATURE CONVERTER");
+					$("#tempConvContainer").show();
+				}
+			});
+			
+			$("#calculateAge").click(function(){
+				calculateAge();
+			});
+			
+			$("#calculateSupply").click(function(){
+				calculateSupply();
+			});
+			
+			$("#calculateCircleProps").click(function(){
+				calculateCircleProps();
+			});
+			
+			$(".temperatureType").change(function(){
+				var tempType = $("input[name='temperatureType']:checked").val();
+				$("#temperatureLabel").html("Enter Temperature In " + tempType + "<span class='mandatoryStarLabel'> *</span>");
+				$("#temperatureValue").val("");
+				
+				if(tempType  == "Celsius"){
+					$("#convertTemperature").attr("value", "Convert To Fahrenheit");
+				}else{
+					$("#convertTemperature").attr("value", "Convert To Celsius");
+				}
+			});
+			
+			$("#convertTemperature").click(function(){
+				var tempType = $("input[name='temperatureType']:checked").val();
+				var input = $("#temperatureValue").val();
+				
+				if(tempType  == "Celsius"){
+					celsiusToFahrenheit(input);
+				}else{
+					fahrenheitToCelsius(input);
+				}
+				
+				showSuccessDiv();
+			});
+			
+			function showSuccessDiv(){
+				$("#errorResultDiv").hide();
+				$("#successResultDiv").show();
+				$("#resultContainer").css("background", "#A7F432");
+			}
+			
+			function showErrorDiv(){
+				$("#successResultDiv").hide();
+				$("#errorResultDiv").show();
+				$("#resultContainer").css("background", "#FD5240");
+			}
+		</script>
+	</body>
+</html>
